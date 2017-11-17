@@ -125,6 +125,7 @@ namespace WordSolver_GUI
 
         public Dictionary<string, int> GenerateWords(string letters, string language, int maxLetters)
         {
+            //this is a change
             words = new List<string>();
 
             GetStringPermutations(letters, "", 3, maxLetters);
