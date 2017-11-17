@@ -102,9 +102,9 @@ namespace WordSolver_GUI
             int dcount = dictionary.Count;
             int i = 0;
 
-            foreach (string m in dictionary)
+            foreach (string s in words)
             {
-                foreach (string s in words)
+                foreach (string m in dictionary)
                 {
                     if (s == m)
                     {
@@ -118,24 +118,20 @@ namespace WordSolver_GUI
                 worker.ReportProgress((int)(frac * 100.0f));
                 i++;
             }
+
             worker.ReportProgress(100);
             return list;
         }
 
-        public WorkerResult GenerateWords(string letters, string language, int maxLetters)
+        public Dictionary<string, int> GenerateWords(string letters, string language, int maxLetters)
         {
-            Stopwatch sw = new Stopwatch();
             words = new List<string>();
 
-            sw.Start();
             GetStringPermutations(letters, "", 3, maxLetters);
             List<string> wordlist = GetWordsFromList(language);
             Dictionary<string, int> matches = GetWordsMatchingDictionary(words, wordlist);
-            sw.Stop();
 
-            float timeTaken = ((float)sw.Elapsed.Milliseconds) / 1000.0f;
-
-            return new WorkerResult(matches, timeTaken);
+            return matches;
         }
 
         private void bw_DoWork(object sender, DoWorkEventArgs e)
@@ -145,7 +141,13 @@ namespace WordSolver_GUI
             if (e != DoWorkEventArgs.Empty)
             {
                 WorkerInput input = e.Argument as WorkerInput;
-                e.Result = GenerateWords(input.InputString, input.Language, input.MaxChars);
+                //Stopwatch sw = new Stopwatch();
+                //sw.Start();
+                Dictionary<string, int> matches = GenerateWords(input.InputString, input.Language, input.MaxChars);
+                //sw.Stop();
+                //float timeTaken = ((float)sw.Elapsed.Milliseconds) / 1000.0f;
+
+                e.Result = new WorkerResult(matches, 0.0f);
             }
         }
 
