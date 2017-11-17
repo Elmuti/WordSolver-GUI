@@ -35,6 +35,7 @@ namespace WordSolver_GUI
         private void Button_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
+            sw.Reset();
             sw.Start();
             bw.RunWorkerAsync(new WorkerInput(textBox1.Text, domainUpDown1.Text, (int)numericUpDown1.Value));
         }
