@@ -71,7 +71,7 @@ namespace WordSolver_GUI
         {
             sw.Stop();
             WorkerResult res = e.Result as WorkerResult;
-            label5.Text = res.Matches.Count + " words found in " + (((float)sw.Elapsed.Milliseconds) / 1000.0f) + " seconds";
+            label5.Text = res.Matches.Count + " words found in " + (((float)sw.ElapsedMilliseconds) / 1000.0f) + " seconds";
             this.Size = new Size(543, 627);
 
             foreach (string match in res.Matches.Keys)
