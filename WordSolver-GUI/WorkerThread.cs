@@ -102,9 +102,9 @@ namespace WordSolver_GUI
             int dcount = dictionary.Count;
             int i = 0;
 
-            foreach (string s in words)
+            foreach (string m in dictionary)
             {
-                foreach (string m in dictionary)
+                foreach (string s in words)
                 {
                     if (s == m)
                     {
