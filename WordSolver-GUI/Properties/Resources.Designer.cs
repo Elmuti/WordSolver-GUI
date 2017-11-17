@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WordSolver_GUI.Properties
-{
-
-
+namespace WordSolver_GUI.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,49 +22,124 @@ namespace WordSolver_GUI.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WordSolver_GUI.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;wordlist&gt;
+        ///&lt;st&gt;&lt;s&gt;2&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;1080&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;&amp;c&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;10-point&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;10th&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;11-point&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;12-point&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;16-point&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;18-point&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;1st&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;2,4,5-t&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;2,4-d&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;20-point&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;2d&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;2nd&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;30-30&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;3d&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;3-d&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;3m&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;3rd&lt;/s&gt;&lt;/st&gt;
+        ///&....
+        /// </summary>
+        internal static string English {
+            get {
+                return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;!DOCTYPE kotus-sanalista SYSTEM &quot;kotus-sanalista.dtd&quot;&gt;
+        ///
+        ///
+        ///&lt;kotus-sanalista&gt;
+        ///&lt;st&gt;&lt;s&gt;aakkonen&lt;/s&gt;&lt;t&gt;&lt;tn&gt;38&lt;/tn&gt;&lt;/t&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;aakkosellinen&lt;/s&gt;&lt;t&gt;&lt;tn&gt;38&lt;/tn&gt;&lt;/t&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;aakkosellisesti&lt;/s&gt;&lt;t&gt;&lt;tn&gt;99&lt;/tn&gt;&lt;/t&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;aakkosellisuus&lt;/s&gt;&lt;t&gt;&lt;tn&gt;40&lt;/tn&gt;&lt;/t&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;aakkosittain&lt;/s&gt;&lt;t&gt;&lt;tn&gt;99&lt;/tn&gt;&lt;/t&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;aakkosjärjestys&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;aakkosnumeerinen&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;aakkostaa&lt;/s&gt;&lt;t&gt;&lt;tn&gt;53&lt;/tn&gt;&lt;/t&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;aakkosto&lt;/s&gt;&lt;t&gt;&lt;tn&gt;2&lt;/tn&gt;&lt;/t&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;aa [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Finnish {
+            get {
+                return ResourceManager.GetString("Finnish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;wordlist&gt;
+        ///&lt;st&gt;&lt;s&gt;abc&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;abm&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;acl&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;acls&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;acpi&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;adac&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;adsl&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;aeg&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;ag&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;agp&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;ags&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;ai&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;aix&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;akw&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;akws&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;amd&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;amds&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;ansi&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;aok&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;aol&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;api&lt;/s&gt;&l....
+        /// </summary>
+        internal static string German {
+            get {
+                return ResourceManager.GetString("German", resourceCulture);
             }
         }
     }
