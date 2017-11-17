@@ -52,7 +52,7 @@ namespace WordSolver_GUI
                 listBox1.Items.Clear();
                 sw.Reset();
                 sw.Start();
-                bw.RunWorkerAsync(new WorkerInput(textBox1.Text, comboBox1.SelectedItem.ToString(), minval, maxval));
+                bw.RunWorkerAsync(new WorkerInput(textBox1.Text, comboBox1.SelectedItem.ToString(), minval, maxval, checkBox1.Checked));
             }
         }
 

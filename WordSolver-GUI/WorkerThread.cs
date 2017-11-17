@@ -18,13 +18,15 @@ namespace WordSolver_GUI
         public string Language;
         public int MinChars;
         public int MaxChars;
+        public bool MustContainAll;
 
-        public WorkerInput(string i, string l, int mm, int m)
+        public WorkerInput(string i, string l, int mm, int m, bool mca)
         {
             InputString = i;
             Language = l;
             MinChars = mm;
             MaxChars = m;
+            MustContainAll = mca;
         }
     }
 
@@ -98,6 +100,12 @@ namespace WordSolver_GUI
             }
         }
 
+        /// <summary>
+        /// Gets words matching dictionary, enforces character limit
+        /// </summary>
+        /// <param name="letters"></param>
+        /// <param name="dictionary"></param>
+        /// <returns></returns>
         public Dictionary<string, int> GetWordsMatchingDictionary(List<string> words, List<string> dictionary)
         {
             Dictionary<string, int> list = new Dictionary<string, int>();
@@ -125,14 +133,51 @@ namespace WordSolver_GUI
             return list;
         }
 
-        public Dictionary<string, int> GenerateWords(string letters, string language, int minLetters, int maxLetters)
+        /// <summary>
+        /// Gets words matching dictionary, doesnt enforce character limit
+        /// </summary>
+        /// <param name="letters"></param>
+        /// <param name="dictionary"></param>
+        /// <returns></returns>
+        public Dictionary<string, int> GetWordsMatchingDictionary(char[] letters, List<string> dictionary)
         {
-            //this is a change
-            words = new List<string>();
+            Dictionary<string, int> list = new Dictionary<string, int>();
+            int dcount = dictionary.Count;
+            int i = 0;
+            foreach(string s in dictionary)
+            {
+                bool correct = true;
+                foreach (char c in letters)
+                {
+                    if (!s.Contains(c))
+                        correct = false;
+                }
 
-            GetStringPermutations(letters, "", minLetters, maxLetters);
+                if (correct)
+                    list[s] = 1;
+
+
+                float frac = ((float)i / (float)dcount);
+                worker.ReportProgress((int)(frac * 100.0f));
+            }
+            return list;
+        }
+
+        public Dictionary<string, int> GenerateWords(string letters, string language, int minLetters, int maxLetters, bool wordMustContainAllLetters)
+        {
             List<string> wordlist = GetWordsFromList(language);
-            Dictionary<string, int> matches = GetWordsMatchingDictionary(words, wordlist);
+            Dictionary<string, int> matches;
+
+            if (!wordMustContainAllLetters)
+            {
+                matches = GetWordsMatchingDictionary(letters.ToCharArray(), wordlist);
+            }
+            else
+            {
+                matches = GetWordsMatchingDictionary(words, wordlist);
+                words = new List<string>();
+                GetStringPermutations(letters, "", minLetters, maxLetters);
+            }
 
             return matches;
         }
@@ -146,7 +191,7 @@ namespace WordSolver_GUI
                 WorkerInput input = e.Argument as WorkerInput;
                 //Stopwatch sw = new Stopwatch();
                 //sw.Start();
-                Dictionary<string, int> matches = GenerateWords(input.InputString, input.Language, input.MinChars, input.MaxChars);
+                Dictionary<string, int> matches = GenerateWords(input.InputString, input.Language, input.MinChars, input.MaxChars, input.MustContainAll);
                 //sw.Stop();
                 //float timeTaken = ((float)sw.Elapsed.Milliseconds) / 1000.0f;
 
