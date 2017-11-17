@@ -29,20 +29,36 @@ namespace WordSolver_GUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.Size = new Size(543, 226);
+            this.Size = new Size(543, 194);
         }
-
+        
         private void Button_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            sw.Reset();
-            sw.Start();
-            bw.RunWorkerAsync(new WorkerInput(textBox1.Text, domainUpDown1.Text, (int)numericUpDown1.Value));
+            progressBar1.Value = 0;
+            this.Size = new Size(543, 226);
+            int minval = (int)numericUpDown2.Value;
+            int maxval = (int)numericUpDown1.Value;
+
+            if (minval > maxval)
+            {
+                MessageBox.Show("Minimum word length must be smaller than maximum!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (textBox1.Text == "")
+            {
+                MessageBox.Show("You must specify the letters to search for in a word!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                listBox1.Items.Clear();
+                sw.Reset();
+                sw.Start();
+                bw.RunWorkerAsync(new WorkerInput(textBox1.Text, comboBox1.SelectedItem.ToString(), minval, maxval));
+            }
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            this.Size = new Size(543, 226);
+            this.Size = new Size(543, 194);
         }
 
         private void SaveButton_Click(object sender, EventArgs e)

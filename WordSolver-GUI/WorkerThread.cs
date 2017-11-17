@@ -16,12 +16,14 @@ namespace WordSolver_GUI
     {
         public string InputString;
         public string Language;
+        public int MinChars;
         public int MaxChars;
 
-        public WorkerInput(string i, string l, int m)
+        public WorkerInput(string i, string l, int mm, int m)
         {
             InputString = i;
             Language = l;
+            MinChars = mm;
             MaxChars = m;
         }
     }
@@ -123,12 +125,12 @@ namespace WordSolver_GUI
             return list;
         }
 
-        public Dictionary<string, int> GenerateWords(string letters, string language, int maxLetters)
+        public Dictionary<string, int> GenerateWords(string letters, string language, int minLetters, int maxLetters)
         {
             //this is a change
             words = new List<string>();
 
-            GetStringPermutations(letters, "", 3, maxLetters);
+            GetStringPermutations(letters, "", minLetters, maxLetters);
             List<string> wordlist = GetWordsFromList(language);
             Dictionary<string, int> matches = GetWordsMatchingDictionary(words, wordlist);
 
@@ -144,7 +146,7 @@ namespace WordSolver_GUI
                 WorkerInput input = e.Argument as WorkerInput;
                 //Stopwatch sw = new Stopwatch();
                 //sw.Start();
-                Dictionary<string, int> matches = GenerateWords(input.InputString, input.Language, input.MaxChars);
+                Dictionary<string, int> matches = GenerateWords(input.InputString, input.Language, input.MinChars, input.MaxChars);
                 //sw.Stop();
                 //float timeTaken = ((float)sw.Elapsed.Milliseconds) / 1000.0f;
 
