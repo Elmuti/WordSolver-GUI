@@ -45,8 +45,7 @@ namespace WordSolver_GUI
 
     public class WorkerThread
     {
-        private static List<string> words = new List<string>();
-        private BackgroundWorker worker;
+        private BackgroundWorker m_Worker;
 
         private static StreamReader GenerateStreamFromString(string s)
         {
@@ -57,7 +56,7 @@ namespace WordSolver_GUI
         }
 
 
-        public static List<string> GetWordsFromList(string language)
+        public static List<string> GetWordsFromList(string language, int minLength, int maxLength)
         {
             string file = "";
 
@@ -72,6 +71,9 @@ namespace WordSolver_GUI
                 case "Finnish":
                     file = Properties.Resources.Finnish;
                     break;
+                case "Spanish":
+                    file = Properties.Resources.Spanish;
+                    break;
                 default:
                     break;
             }
@@ -79,25 +81,11 @@ namespace WordSolver_GUI
             List<string> list = new List<string>();
             foreach (XElement ele in XElement.Load(GenerateStreamFromString(file)).Elements("st"))
             {
-                list.Add(ele.Element("s").Value);
+                string word = ele.Element("s").Value;
+                if (word.Length <= maxLength && word.Length >= minLength)
+                    list.Add(word);
             }
             return list;
-        }
-
-        private static void GetStringPermutations(string word, string currentWord, int minLength, int maxLength)
-        {
-            string stat = currentWord;
-            for (int i = 0; i < word.Length; i++)
-            {
-                currentWord = stat + word.ElementAt(i);
-
-                if (currentWord.Length >= minLength && currentWord.Length <= maxLength)
-                {
-                    words.Add(currentWord);
-                }
-
-                GetStringPermutations(word.Remove(i, 1), currentWord, minLength, maxLength);
-            }
         }
 
         /// <summary>
@@ -106,30 +94,50 @@ namespace WordSolver_GUI
         /// <param name="letters"></param>
         /// <param name="dictionary"></param>
         /// <returns></returns>
-        public Dictionary<string, int> GetWordsMatchingDictionary(List<string> words, List<string> dictionary)
+        public Dictionary<string, int> GetWordsMatchingDictionary(string letters, List<string> dictionary)
         {
             Dictionary<string, int> list = new Dictionary<string, int>();
             int dcount = dictionary.Count;
             int i = 0;
+            bool correct = false;
+            string original = letters;
+            int totalLetters = letters.Length;
 
             foreach (string m in dictionary)
             {
-                foreach (string s in words)
+                letters = original;
+                for (int f = 0; f < m.Length; f++)
                 {
-                    if (s == m)
+
+                    correct = false;
+                    if (totalLetters < m.Length)
                     {
-                        if (list.ContainsKey(s)) //avoid duplicates
-                            list[s]++;
-                        else
-                            list.Add(s, 1);
+                        break;
+                    }
+                    if (letters.Contains(m[f]))
+                    {
+                        letters = letters.Remove(letters.IndexOf(m[f]), 1);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    correct = true;
+                }
+                if (correct)
+                {
+                    if (!list.ContainsKey(m)) //avoid duplicates
+                    {
+                        list.Add(m, 1);
                     }
                 }
+
                 float frac = ((float)i / (float)dcount);
-                worker.ReportProgress((int)(frac * 100.0f));
+                m_Worker.ReportProgress((int)(frac * 100.0f));
                 i++;
             }
 
-            worker.ReportProgress(100);
+            m_Worker.ReportProgress(100);
             return list;
         }
 
@@ -158,14 +166,14 @@ namespace WordSolver_GUI
 
 
                 float frac = ((float)i / (float)dcount);
-                worker.ReportProgress((int)(frac * 100.0f));
+                m_Worker.ReportProgress((int)(frac * 100.0f));
             }
             return list;
         }
 
         public Dictionary<string, int> GenerateWords(string letters, string language, int minLetters, int maxLetters, bool wordMustContainAllLetters)
         {
-            List<string> wordlist = GetWordsFromList(language);
+            List<string> wordlist = GetWordsFromList(language, minLetters, maxLetters);
             Dictionary<string, int> matches;
 
             if (!wordMustContainAllLetters)
@@ -174,9 +182,7 @@ namespace WordSolver_GUI
             }
             else
             {
-                matches = GetWordsMatchingDictionary(words, wordlist);
-                words = new List<string>();
-                GetStringPermutations(letters, "", minLetters, maxLetters);
+                matches = GetWordsMatchingDictionary(letters, wordlist);
             }
 
             return matches;
@@ -189,22 +195,17 @@ namespace WordSolver_GUI
             if (e != DoWorkEventArgs.Empty)
             {
                 WorkerInput input = e.Argument as WorkerInput;
-                //Stopwatch sw = new Stopwatch();
-                //sw.Start();
                 Dictionary<string, int> matches = GenerateWords(input.InputString, input.Language, input.MinChars, input.MaxChars, input.MustContainAll);
-                //sw.Stop();
-                //float timeTaken = ((float)sw.Elapsed.Milliseconds) / 1000.0f;
-
                 e.Result = new WorkerResult(matches, 0.0f);
             }
         }
 
         public WorkerThread(Form1 f)
         {
-            worker = f.bw;
-            worker.DoWork += new DoWorkEventHandler(bw_DoWork);
-            worker.ProgressChanged += new ProgressChangedEventHandler(f.bw_ProgressChanged);
-            worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(f.bw_RunWorkerCompleted);
+            m_Worker = f.BackgroundWorker;
+            m_Worker.DoWork += new DoWorkEventHandler(bw_DoWork);
+            m_Worker.ProgressChanged += new ProgressChangedEventHandler(f.bw_ProgressChanged);
+            m_Worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(f.bw_RunWorkerCompleted);
         }
     }
 

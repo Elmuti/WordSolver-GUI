@@ -25,7 +25,7 @@ namespace WordSolver_GUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 f = new Form1();
-            f.workerThread = new WorkerThread(f);
+            f.WorkerThread = new WorkerThread(f);
             Application.Run(f);
         }
     }

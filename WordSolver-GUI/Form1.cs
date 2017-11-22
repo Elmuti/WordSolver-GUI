@@ -16,15 +16,15 @@ namespace WordSolver_GUI
     {
         private Stopwatch sw = new Stopwatch();
 
-        public BackgroundWorker bw = new BackgroundWorker();
-        public WorkerThread workerThread { get; set; }
+        public BackgroundWorker BackgroundWorker = new BackgroundWorker();
+        public WorkerThread WorkerThread { get; set; }
 
         public Form1()
         {
             InitializeComponent();
-            bw.WorkerReportsProgress = true;
-            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
-            bw.ProgressChanged += bw_ProgressChanged;
+            BackgroundWorker.WorkerReportsProgress = true;
+            BackgroundWorker.RunWorkerCompleted += bw_RunWorkerCompleted;
+            BackgroundWorker.ProgressChanged += bw_ProgressChanged;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace WordSolver_GUI
                 listBox1.Items.Clear();
                 sw.Reset();
                 sw.Start();
-                bw.RunWorkerAsync(new WorkerInput(textBox1.Text, comboBox1.SelectedItem.ToString(), minval, maxval, checkBox1.Checked));
+                BackgroundWorker.RunWorkerAsync(new WorkerInput(textBox1.Text, comboBox1.SelectedItem.ToString(), minval, maxval, checkBox1.Checked));
             }
         }
 

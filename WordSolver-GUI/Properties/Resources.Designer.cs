@@ -64,25 +64,25 @@ namespace WordSolver_GUI.Properties {
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;wordlist&gt;
         ///&lt;st&gt;&lt;s&gt;2&lt;/s&gt;&lt;/st&gt;
         ///&lt;st&gt;&lt;s&gt;1080&lt;/s&gt;&lt;/st&gt;
-        ///&lt;st&gt;&lt;s&gt;&amp;c&lt;/s&gt;&lt;/st&gt;
-        ///&lt;st&gt;&lt;s&gt;10-point&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;c&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;10point&lt;/s&gt;&lt;/st&gt;
         ///&lt;st&gt;&lt;s&gt;10th&lt;/s&gt;&lt;/st&gt;
-        ///&lt;st&gt;&lt;s&gt;11-point&lt;/s&gt;&lt;/st&gt;
-        ///&lt;st&gt;&lt;s&gt;12-point&lt;/s&gt;&lt;/st&gt;
-        ///&lt;st&gt;&lt;s&gt;16-point&lt;/s&gt;&lt;/st&gt;
-        ///&lt;st&gt;&lt;s&gt;18-point&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;11point&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;12point&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;16point&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;18point&lt;/s&gt;&lt;/st&gt;
         ///&lt;st&gt;&lt;s&gt;1st&lt;/s&gt;&lt;/st&gt;
-        ///&lt;st&gt;&lt;s&gt;2,4,5-t&lt;/s&gt;&lt;/st&gt;
-        ///&lt;st&gt;&lt;s&gt;2,4-d&lt;/s&gt;&lt;/st&gt;
-        ///&lt;st&gt;&lt;s&gt;20-point&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;245t&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;24d&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;20point&lt;/s&gt;&lt;/st&gt;
         ///&lt;st&gt;&lt;s&gt;2d&lt;/s&gt;&lt;/st&gt;
         ///&lt;st&gt;&lt;s&gt;2nd&lt;/s&gt;&lt;/st&gt;
-        ///&lt;st&gt;&lt;s&gt;30-30&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;3030&lt;/s&gt;&lt;/st&gt;
         ///&lt;st&gt;&lt;s&gt;3d&lt;/s&gt;&lt;/st&gt;
-        ///&lt;st&gt;&lt;s&gt;3-d&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;3d&lt;/s&gt;&lt;/st&gt;
         ///&lt;st&gt;&lt;s&gt;3m&lt;/s&gt;&lt;/st&gt;
         ///&lt;st&gt;&lt;s&gt;3rd&lt;/s&gt;&lt;/st&gt;
-        ///&....
+        ///&lt;st&gt;&lt;s&gt;....
         /// </summary>
         internal static string English {
             get {
@@ -140,6 +140,35 @@ namespace WordSolver_GUI.Properties {
         internal static string German {
             get {
                 return ResourceManager.GetString("German", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;wordlist&gt;
+        ///&lt;st&gt;&lt;s&gt;aarn&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;aarnico&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;aaronita&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;aba&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;ababa&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;ababillarse&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;ababol&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;abac&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;abacal&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;abacalero&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;abacera&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;abacero&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;abachar&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;abacial&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;baco&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;abacora&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;abacorar&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;abad&lt;/s&gt;&lt;/st&gt;
+        ///&lt;st&gt;&lt;s&gt;abada&lt;/s&gt;&lt;/st&gt;
+        ///&lt; [rest of string w....
+        /// </summary>
+        internal static string Spanish {
+            get {
+                return ResourceManager.GetString("Spanish", resourceCulture);
             }
         }
     }

@@ -196,6 +196,7 @@
             this.comboBox1.Items.AddRange(new object[] {
             "English",
             "German",
+            "Spanish",
             "Finnish"});
             this.comboBox1.Location = new System.Drawing.Point(253, 16);
             this.comboBox1.Name = "comboBox1";
