@@ -46,6 +46,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
@@ -146,9 +147,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(380, 561);
+            this.button2.Location = new System.Drawing.Point(422, 561);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(135, 21);
+            this.button2.Size = new System.Drawing.Size(93, 21);
             this.button2.TabIndex = 11;
             this.button2.Text = "Close Results";
             this.button2.UseVisualStyleBackColor = true;
@@ -156,9 +157,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(245, 561);
+            this.button3.Location = new System.Drawing.Point(331, 561);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(129, 21);
+            this.button3.Size = new System.Drawing.Size(80, 21);
             this.button3.TabIndex = 12;
             this.button3.Text = "Save Results";
             this.button3.UseVisualStyleBackColor = true;
@@ -216,11 +217,22 @@
             this.checkBox1.Text = "Word must contain all listed letters";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(206, 561);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(111, 21);
+            this.button4.TabIndex = 17;
+            this.button4.Text = "Copy to clipboard";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.ClipboardButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(527, 591);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label6);
@@ -270,6 +282,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button button4;
     }
 }
 

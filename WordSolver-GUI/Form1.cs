@@ -61,6 +61,16 @@ namespace WordSolver_GUI
             this.Size = new Size(543, 194);
         }
 
+        private void ClipboardButton_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (string s in listBox1.Items)
+            {
+                sb.Append(s + "\n");
+            }
+            Clipboard.SetText(sb.ToString());
+        }
+
         private void SaveButton_Click(object sender, EventArgs e)
         {
             saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
